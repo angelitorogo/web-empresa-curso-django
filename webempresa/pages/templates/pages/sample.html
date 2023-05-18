@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+
+<!--titulo-->
+{% block title %}
+    Contacto
+{% endblock %}
+
+<!--contenido-->
+{% block content %}
+    <section class="page-section about-heading">
+        <div class="container">
+        <div class="about-heading-content mbtm">
+            <div class="row">
+            <div class="col-xl-9 col-lg-10 mx-auto">
+                <div class="bg-faded rounded p-5 forced">
+                <h2 class="section-heading mb-4">
+                    <span class="section-heading-lower">{{page.title}}</span>
+                </h2>
+                <div class="section-content">
+                    {{page.content|safe}} <!--por el contenido editado con ckeditor-->
+                    {% if user.is_authenticated %}
+        
+                        <p><a href="{% url 'admin:pages_page_change' page.id %}">Editar</a></p> <!--'admin:APP_MODEL_ACTION', 'parametro'(si lo tuviera)-->
+                    {% endif %}
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+{% endblock %}
